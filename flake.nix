@@ -1,9 +1,9 @@
 {
-  description = "A nix overlay to install Discord Canary with Powercord";
+  description = "A nix overlay to install Discord Canary with Replugged";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    powercord.url = "github:powercord-org/powercord";
+    powercord.url = "github:replugged-org/replugged";
     powercord.flake = false;
   };
 
