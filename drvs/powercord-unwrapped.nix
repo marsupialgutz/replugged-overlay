@@ -12,8 +12,8 @@
   installPhase = ''
     runHook preInstall
 
-    substituteInPlace src/Powercord/plugins/pc-moduleManager/index.js --replace "const { SpecialChannels: { CSS_SNIPPETS, STORE_PLUGINS, STORE_THEMES } } = require('powercord/constants');" "const { SETTINGS_FOLDER, SpecialChannels: { CSS_SNIPPETS, STORE_PLUGINS, STORE_THEMES } } = require('powercord/constants');"
-    substituteInPlace src/Powercord/plugins/pc-moduleManager/index.js --replace "this._quickCSSFile = join(__dirname, 'quickcss.css');" "this._quickCSSFile = join(SETTINGS_FOLDER, 'quickcss.css');" 
+    substituteInPlace src/Powercord/plugins/pc-moduleManager/index.js --replace "const { SpecialChannels: { CSS_SNIPPETS, STORE_PLUGINS, STORE_THEMES } } = require('powercord/constants')" "const { SETTINGS_FOLDER, SpecialChannels: { CSS_SNIPPETS, STORE_PLUGINS, STORE_THEMES } } = require('powercord/constants')"
+    substituteInPlace src/Powercord/plugins/pc-moduleManager/index.js --replace "this._quickCSSFile = join(__dirname, 'quickcss.css')" "this._quickCSSFile = join(SETTINGS_FOLDER, 'quickcss.css')" 
 
     mv deps/powercord $out
     rm $out/node_modules
