@@ -7,7 +7,12 @@
   src = inputs.powercord;
   yarnLock = "${inputs.self}/misc/yarn.lock";
 
-  patches = [ ../misc/powercord.patch ../misc/powercord1.patch ];
+  patches = [ ../misc/powercord.patch ];
+
+  patchPhase = ''
+    substituteInPlace src/Powercord/plugins/pc-moduleManager/index.js --replace "const { SpecialChannels: { CSS_SNIPPETS, STORE_PLUGINS, STORE_THEMES } } = require('powercord/constants');" "const { SETTINGS_FOLDER, SpecialChannels: { CSS_SNIPPETS, STORE_PLUGINS, STORE_THEMES } } = require('powercord/constants');"
+    substituteInPlace src/Powercord/plugins/pc-moduleManager/index.js --replace "this._quickCSSFile = join(__dirname, 'quickcss.css');" "this._quickCSSFile = join(SETTINGS_FOLDER, 'quickcss.css');" 
+  '';
 
   installPhase = ''
     runHook preInstall
