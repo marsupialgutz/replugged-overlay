@@ -7,7 +7,7 @@
   src = inputs.powercord;
   yarnLock = "${inputs.self}/misc/yarn.lock";
 
-  patches = [ ../misc/powercord.patch ];
+  patches = [ ../misc/powercord.patch ../misc/powercord1.patch ];
 
   installPhase = ''
     runHook preInstall
