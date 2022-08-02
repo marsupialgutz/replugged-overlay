@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    powercord.url = "github:marsupialgutz/replugged-nix";
+    powercord.url = "github:replugged-org/replugged";
     powercord.flake = false;
   };
 
