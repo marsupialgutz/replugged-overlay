@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    powercord.url = "github:replugged-org/replugged";
-    powercord.flake = false;
+    replugged.url = "github:replugged-org/replugged";
+    replugged.flake = false;
   };
 
   outputs = { self, nixpkgs, ... } @ inputs:
@@ -18,6 +18,6 @@
     };
   in {
     inherit overlay;
-    packages.${system} = { inherit (pkgs) powercord-unwrapped powercord discord-plugged; };
+    packages.${system} = { inherit (pkgs) replugged-unwrapped replugged discord-plugged; };
   };
 }

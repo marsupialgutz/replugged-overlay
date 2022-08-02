@@ -1,5 +1,5 @@
 { lib
-, powercord-unwrapped
+, replugged-unwrapped
 , runCommandLocal
 , plugins
 , themes
@@ -21,15 +21,15 @@ let
   mappedPlugins = map "plugins" (intoAddons plugins "manifest.json");
   mappedThemes = map "themes" (intoAddons themes "powercord_manifest.json");
 in
-runCommandLocal "powercord" {
-  passthru.unwrapped = powercord-unwrapped;
-  meta = powercord-unwrapped.meta // {
-    priority = (powercord-unwrapped.meta.priority or 0) - 1;
+runCommandLocal "replugged" {
+  passthru.unwrapped = replugged-unwrapped;
+  meta = replugged-unwrapped.meta // {
+    priority = (replugged-unwrapped.meta.priority or 0) - 1;
   };
 } ''
-  cp -a "${powercord-unwrapped}" "$out"
+  cp -a "${replugged-unwrapped}" "$out"
   chmod u+w "$out"
-  ln -s "${powercord-unwrapped.deps}/node_modules" "$out/node_modules"
+  ln -s "${replugged-unwrapped.deps}/node_modules" "$out/node_modules"
 
   cd "$out/src/Powercord"
   chmod u+w ./plugins ./themes

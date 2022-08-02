@@ -1,14 +1,14 @@
 inputs: final: prev: rec {
-  powercord-unwrapped = prev.callPackage ./drvs/powercord-unwrapped.nix { inherit inputs; };
+  replugged-unwrapped = prev.callPackage ./drvs/replugged-unwrapped.nix { inherit inputs; };
 
-  powercord = prev.callPackage ./drvs/powercord.nix {
-    inherit powercord-unwrapped;
+  replugged = prev.callPackage ./drvs/replugged.nix {
+    inherit replugged-unwrapped;
     plugins = [ ];
     themes = [ ];
   };
 
   discord-plugged = prev.callPackage ./drvs/discord.nix {
-    inherit inputs powercord;
+    inherit inputs replugged;
     plugins = [ ];
     themes = [ ];
   };
